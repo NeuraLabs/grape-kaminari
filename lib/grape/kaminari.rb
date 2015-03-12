@@ -26,13 +26,13 @@ module Grape
 
           def paginate(collection)
             collection.page(page).per(page_size).padding(params[:offset]).tap do |data|
-              header 'X-Total',       data.total_count
-              header 'X-Total-Pages', data.num_pages
-              header 'X-Page',        data.current_page
-              header 'X-Next-Page',   data.next_page
-              header 'X-Prev-Page',   data.prev_page
-              header 'X-Page-Size',   page_size
-              header 'X-Offset',      offset
+              header 'X-Total',       data.total_count.to_s
+              header 'X-Total-Pages', data.num_pages.to_s
+              header 'X-Page',        data.current_page.to_s
+              header 'X-Next-Page',   data.next_page.to_s
+              header 'X-Prev-Page',   data.prev_page.to_s
+              header 'X-Page-Size',   page_size.to_s
+              header 'X-Offset',      offset.to_s
             end
           end
 
