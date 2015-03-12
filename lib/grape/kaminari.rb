@@ -46,7 +46,7 @@ module Grape
           )
           params do
             optional :page,      type: Integer, default: 1
-            optional :page_size, type: Integer, default: options[:page_size]
+            optional :page_size, type: Integer, default: options[:page_size], max_value: options[:max_page_size]
             if options[:offset].is_a? Numeric
               optional :offset, type: Integer,  default: options[:offset]
             end
